@@ -5,7 +5,7 @@ import LanguageSelector from "./LanguageSelector";
 import { CODE_SNIPPETS } from "../constants";
 import Output from "./Output";
 
-const CodeEditor = () => {
+const CodeEditor = ({ handleToggleTheme, toggleTheme }) => {
   const [value, setValue] = useState("");
   const [language, setlanguage] = useState("javascript");
   const editorRef = useRef();
@@ -22,16 +22,18 @@ const CodeEditor = () => {
 
   return (
     <Box>
-      <HStack spacing={4}>
-        <Box w={"50%"}>
+      <HStack spacing={4} flexDirection={{ base: "column", md: "row" }}>
+        <Box width={{ base: "100%", md: "50%" }}>
           <LanguageSelector
             language={language}
             onSelect={onSelect}
             className="z-10"
+            handleToggleTheme={handleToggleTheme}
+            toggleTheme={toggleTheme}
           />
           <Editor
             height="75vh"
-            theme="vs-dark"
+            theme={!toggleTheme ? "vs-dark" : "vs-light"}
             language={language}
             defaultValue={CODE_SNIPPETS[language]}
             value={value}
@@ -51,7 +53,11 @@ const CodeEditor = () => {
             }}
           />
         </Box>
-        <Output editorRef={editorRef} language={language} />
+        <Output
+          editorRef={editorRef}
+          language={language}
+          toggleTheme={toggleTheme}
+        />
       </HStack>
     </Box>
   );

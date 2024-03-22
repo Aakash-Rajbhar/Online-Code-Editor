@@ -1,9 +1,8 @@
-import { Box, Button, Flex, Text, Textarea } from "@chakra-ui/react";
+import { Box, Button, Flex, Text, Textarea, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { executeCode } from "../api";
-import { useToast } from "@chakra-ui/react";
 
-const Output = ({ editorRef, language }) => {
+const Output = ({ editorRef, language, toggleTheme }) => {
   const [output, setOutput] = useState(null);
   const [isloading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -38,7 +37,7 @@ const Output = ({ editorRef, language }) => {
   };
 
   return (
-    <Box w={"50%"} >
+    <Box w={{ base: "100%", md: "50%" }}>
       <Button
         isLoading={isloading}
         onClick={runCode}
@@ -51,9 +50,11 @@ const Output = ({ editorRef, language }) => {
       >
         Run Code
       </Button>
+
       <Text mb={2} fontSize={"lg"}>
         Input:
       </Text>
+
       <Textarea
         height={"33vh"}
         width={"100%"}
@@ -61,8 +62,8 @@ const Output = ({ editorRef, language }) => {
         border={"1px solid"}
         borderColor={"gray.700"}
         borderRadius={4}
-        color={"gray.500"}
-        background={"#111"}
+        color={!toggleTheme ? "gray.500" : "gray.700"}
+        background={!toggleTheme ? "#111" : "#F5F5F5"}
         onChange={(e) => setInputValue(e.target.value)}
         placeholder="Enter input..."
         fontSize={"18px"}
@@ -76,12 +77,11 @@ const Output = ({ editorRef, language }) => {
         height={"33vh"}
         p={2}
         border={"1px solid"}
-        color={isError ? "red.500" : "gray.500"}
+        color={isError ? "red.500" : !toggleTheme ? "gray.500" : "gray.700"}
+        background={!toggleTheme ? "#111" : "#F5F5F5"}
         borderRadius={4}
         borderColor={isError ? "red.500" : "gray.700"}
-
         className="overflow-auto text-[18px]"
-   
       >
         {output
           ? output.map((line, i) => <Text key={i}>{line}</Text>)

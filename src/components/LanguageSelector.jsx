@@ -1,20 +1,15 @@
-import { Box, Button, Text } from "@chakra-ui/react";
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
-} from "@chakra-ui/react";
+import {Box, Button, Text, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { LANGUAGE_VERSIONS } from "../constants";
-import { ChevronDownIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 const Language = Object.entries(LANGUAGE_VERSIONS);
 
-const LanguageSelector = ({ language, onSelect }) => {
+const LanguageSelector = ({
+  language,
+  onSelect,
+  handleToggleTheme,
+  toggleTheme,
+}) => {
   return (
     <Box ml={2} mb={4}>
       <Text mb={2} fontSize={"large"}>
@@ -30,6 +25,7 @@ const LanguageSelector = ({ language, onSelect }) => {
           transition="all 0.2s"
           borderRadius="md"
           borderWidth="1px"
+          borderColor={!toggleTheme ? "gray.600" : "gray.900"}
           mb={4}
         >
           {language}
@@ -40,7 +36,7 @@ const LanguageSelector = ({ language, onSelect }) => {
           transition="all 0.2s"
           borderRadius="md"
           borderWidth="1px"
-          background={"#111"}
+          background={!toggleTheme ? "#111" : "#fff"}
           zIndex={"10"}
         >
           {Language.map(([lang, version]) => (
@@ -51,13 +47,30 @@ const LanguageSelector = ({ language, onSelect }) => {
               px={4}
               py={2}
               borderRadius="md"
-              _hover={{ background: "gray.900" }}
+              _hover={{ background: !toggleTheme ? "gray.900" : "gray.100" }}
             >
               {lang} &ndash; {version}
             </MenuItem>
           ))}
         </MenuList>
       </Menu>
+      {!toggleTheme ? (
+        <SunIcon
+          ml={4}
+          mb={4}
+          boxSize={6}
+          className="cursor-pointer"
+          onClick={handleToggleTheme}
+        />
+      ) : (
+        <MoonIcon
+          ml={4}
+          mb={4}
+          boxSize={6}
+          className="cursor-pointer"
+          onClick={handleToggleTheme}
+        />
+      )}
     </Box>
   );
 };
