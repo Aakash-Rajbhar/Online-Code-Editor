@@ -47,6 +47,8 @@ const Output = ({ editorRef, language, toggleTheme }) => {
         py={2}
         border={"1px solid"}
         borderRadius="md"
+        transition={"all 0.2s ease-in-out"}
+        _hover={{ outline: "1px solid" }}
       >
         Run Code
       </Button>
