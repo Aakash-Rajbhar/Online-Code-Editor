@@ -57,6 +57,8 @@ const Output = ({ editorRef, language, toggleTheme }) => {
 
       <Textarea
         height={"33vh"}
+        minHeight={"20vh"}
+        maxHeight={"33vh"}
         width={"100%"}
         p={2}
         border={"1px solid"}
