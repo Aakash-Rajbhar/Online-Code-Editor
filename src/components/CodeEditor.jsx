@@ -1,13 +1,13 @@
-import { Box, HStack } from "@chakra-ui/react";
-import Editor from "@monaco-editor/react";
-import { useRef, useState, useEffect } from "react";
-import LanguageSelector from "./LanguageSelector";
-import { CODE_SNIPPETS } from "../constants";
-import Output from "./Output";
+import { border, Box, HStack } from '@chakra-ui/react';
+import Editor from '@monaco-editor/react';
+import { useRef, useState } from 'react';
+import LanguageSelector from './LanguageSelector';
+import { CODE_SNIPPETS } from '../constants';
+import Output from './Output';
 
 const CodeEditor = ({ handleToggleTheme, toggleTheme }) => {
-  const [value, setValue] = useState("");
-  const [language, setlanguage] = useState("javascript");
+  const [value, setValue] = useState('');
+  const [language, setlanguage] = useState('javascript');
   const editorRef = useRef();
 
   const onMount = (editor) => {
@@ -22,18 +22,19 @@ const CodeEditor = ({ handleToggleTheme, toggleTheme }) => {
 
   return (
     <Box>
-      <HStack spacing={4} flexDirection={{ base: "column", md: "row" }}>
-        <Box width={{ base: "100%", md: "50%" }}>
+      <HStack spacing={4} flexDirection={{ base: 'column', md: 'row' }}>
+        <Box width={{ base: '100%', md: '50%' }}>
           <LanguageSelector
             language={language}
             onSelect={onSelect}
-            className="z-10"
+            className="z-10 border-2 border-gray-500"
             handleToggleTheme={handleToggleTheme}
             toggleTheme={toggleTheme}
           />
           <Editor
+            className="border-2 border-gray-500 rounded-md"
             height="75vh"
-            theme={!toggleTheme ? "vs-dark" : "vs-light"}
+            theme={!toggleTheme ? 'vs-dark' : 'vs-light'}
             language={language}
             defaultValue={CODE_SNIPPETS[language]}
             value={value}
@@ -45,11 +46,11 @@ const CodeEditor = ({ handleToggleTheme, toggleTheme }) => {
                 left: 10,
                 right: 10,
                 bottom: 20,
-              },              
+              },
               fontSize: 16,
-              fontFamily: "Cascadia Code",
+              fontFamily: 'Cascadia Code',
               fontLigatures: true,
-              wordWrap: "on",
+              wordWrap: 'on',
               scrollBeyondLastLine: false,
               automaticLayout: true,
             }}
