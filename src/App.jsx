@@ -1,7 +1,7 @@
-import "./App.css";
-import { Box, Button } from "@chakra-ui/react";
-import CodeEditor from "./components/CodeEditor";
-import { useState } from "react";
+import './App.css';
+import { Box } from '@chakra-ui/react';
+import CodeEditor from './components/CodeEditor';
+import { useState } from 'react';
 
 function App() {
   const [toggleTheme, setToggleTheme] = useState(false);
@@ -12,9 +12,9 @@ function App() {
   return (
     <>
       <Box
-        minH={"100vh"}
-        background={!toggleTheme ? "#111" : "#F5FFFA"}
-        color={"gray.500"}
+        minH={'100vh'}
+        background={!toggleTheme ? '#111' : '#FBFCFA'}
+        color={'gray.500'}
         px={6}
         py={8}
       >
