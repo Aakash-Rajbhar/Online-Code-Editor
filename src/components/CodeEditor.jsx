@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import LanguageSelector from './LanguageSelector';
 import { CODE_SNIPPETS } from '../constants';
 import Output from './Output';
-import { CodeXml } from 'lucide-react';
+import { FileCode2 } from 'lucide-react';
 
 const CodeEditor = ({ handleToggleTheme, toggleTheme }) => {
   const [value, setValue] = useState('');
@@ -20,6 +20,7 @@ const CodeEditor = ({ handleToggleTheme, toggleTheme }) => {
   const onSelect = (language) => {
     setLanguage(language);
     setValue(CODE_SNIPPETS[language] || '');
+    1;
   };
 
   return (
@@ -37,15 +38,26 @@ const CodeEditor = ({ handleToggleTheme, toggleTheme }) => {
             handleToggleTheme={handleToggleTheme}
             toggleTheme={toggleTheme}
           />
-          <div className="border-2 border-gray-500 rounded-b-xl p-2">
-            <div>
-              <h2 className="flex gap-2 items-center py-2 px-2 text-2xl font-medium border-b-2 border-gray-500">
-                <CodeXml className="w-8 h-8" />
+          <div className="border-[1px] border-gray-500 rounded-b-xl p-2">
+            <div
+              className={`${
+                !toggleTheme ? 'bg-gray-600/50 border-gray-500' : 'bg-gray-100'
+              }  border-b-2 `}
+            >
+              <h2
+                className={`h-full flex gap-1 ${
+                  !toggleTheme ? 'text-gray-100' : 'text-gray-500'
+                } items-center py-2 px-2 text-2xl tracking-widest font-medium`}
+              >
+                <FileCode2
+                  className={`w-8 h-8 ${
+                    !toggleTheme ? 'text-gray-100' : 'text-gray-500'
+                  }`}
+                />
                 Code Editor
               </h2>
             </div>
             <Editor
-              className=""
               height="75vh"
               theme={!toggleTheme ? 'vs-dark' : 'vs-light'}
               language={language}

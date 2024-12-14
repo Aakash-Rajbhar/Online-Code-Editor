@@ -2,7 +2,13 @@ import { Box, Button, Text, Textarea, useToast } from '@chakra-ui/react';
 import { executeCode } from '../api';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { ChevronsLeftRightEllipsis, Play, SquareTerminal } from 'lucide-react';
+import {
+  CheckCheck,
+  ChevronsLeftRightEllipsis,
+  CircleX,
+  Play,
+  SquareTerminal,
+} from 'lucide-react';
 
 const Output = ({ editorRef, language, toggleTheme }) => {
   const [output, setOutput] = useState(null);
@@ -66,7 +72,7 @@ const Output = ({ editorRef, language, toggleTheme }) => {
         Run Code
       </Button>
 
-      <div className="border-2 border-gray-500 rounded-b-xl p-2">
+      <div className="border-[1px] border-gray-500 rounded-b-xl p-2">
         <Text
           mb={2}
           fontSize={'xl'}
@@ -89,7 +95,7 @@ const Output = ({ editorRef, language, toggleTheme }) => {
         ></Textarea>
       </div>
 
-      <div className="border-2 border-gray-500 rounded-b-xl p-2">
+      <div className="border-[1px] border-gray-500 rounded-b-xl p-2">
         <Text
           mb={2}
           fontSize={'xl'}
@@ -99,16 +105,22 @@ const Output = ({ editorRef, language, toggleTheme }) => {
           Output:{' '}
           {output ? (
             isError ? (
-              <Text color={'red'}>Failed to execute!</Text>
+              <Text className="flex gap-1 items-center" color={'red'}>
+                <CircleX width={20} hei color="#f00000" />
+                Failed to execute!
+              </Text>
             ) : (
-              <Text color={'green'}>Executed Successfully!</Text>
+              <Text color={'green'} className="flex gap-1 items-center">
+                <CheckCheck color="#008000" width={24} height={24} />
+                Executed Successfully!
+              </Text>
             )
           ) : null}
         </Text>
 
         <Box
           height={'40vh'}
-          overflowY={'scroll'}
+          overflowY={'auto'}
           p={2}
           color={
             output && isError
