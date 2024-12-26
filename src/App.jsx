@@ -13,7 +13,7 @@ function App() {
     <>
       <Box
         minH={'100vh'}
-        background={!toggleTheme ? '#111' : '#FBFCFA'}
+        background={!toggleTheme ? '#252525' : '#ffffff'}
         color={'gray.500'}
         px={6}
         py={8}

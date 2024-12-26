@@ -30,7 +30,7 @@ const CodeEditor = ({ handleToggleTheme, toggleTheme }) => {
         flexDirection={{ base: 'column', md: 'row' }}
         alignItems={'flex-end'}
       >
-        <Box width={{ base: '100%', md: '50%' }}>
+        <Box width={{ base: '100%', md: '70%' }}>
           <LanguageSelector
             language={language}
             onSelect={onSelect}
@@ -38,10 +38,10 @@ const CodeEditor = ({ handleToggleTheme, toggleTheme }) => {
             handleToggleTheme={handleToggleTheme}
             toggleTheme={toggleTheme}
           />
-          <div className="border-[1px] border-gray-500 rounded-b-xl p-2">
+          <div className="border-[1px] border-[#555555] rounded-lg p-2">
             <div
               className={`${
-                !toggleTheme ? 'bg-gray-600/50 border-gray-500' : 'bg-gray-100'
+                !toggleTheme ? 'bg-[#252525] border-b-[#555555]' : 'bg-gray-100'
               }  border-b-2 `}
             >
               <h2

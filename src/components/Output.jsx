@@ -57,10 +57,10 @@ const Output = ({ editorRef, language, toggleTheme }) => {
         onClick={runCode}
         variant={'outline'}
         mb={4}
-        px={2}
+        px={4}
         py={2}
         maxWidth={'fit-content'}
-        border={'2px solid #555'}
+        border={'1px solid #555555'}
         borderRadius="md"
         transition={'all 0.2s ease-in-out'}
         _hover={{ outline: '1px solid' }}
@@ -72,22 +72,22 @@ const Output = ({ editorRef, language, toggleTheme }) => {
         Run Code
       </Button>
 
-      <div className="border-[1px] border-gray-500 rounded-b-xl p-2">
+      <div className="border-[1px] border-[#555555] rounded-lg px-2">
         <Text
           mb={2}
           fontSize={'xl'}
-          className="flex items-center gap-2 border-b-2 py-2 border-b-gray-500"
+          className="flex items-center gap-2 border-b-[1px] py-2 border-b-[#555555]"
         >
           <ChevronsLeftRightEllipsis /> Input:
         </Text>
 
         <Textarea
-          minHeight={'22.5vh'}
+          minHeight={'24.5vh'}
           width={'100%'}
           p={2}
           outline={'none'}
           color={!toggleTheme ? 'gray.500' : 'gray.700'}
-          background={!toggleTheme ? '#111' : 'white'}
+          background={!toggleTheme ? '#252525' : 'white'}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder="Enter input..."
           fontSize={'18px'}
@@ -95,11 +95,11 @@ const Output = ({ editorRef, language, toggleTheme }) => {
         ></Textarea>
       </div>
 
-      <div className="border-[1px] border-gray-500 rounded-b-xl p-2">
+      <div className="border-[1px] border-gray-500 rounded-xl px-2">
         <Text
           mb={2}
           fontSize={'xl'}
-          className="flex items-center gap-2 border-b-2 py-2 border-b-gray-500"
+          className="flex items-center gap-2 border-b-[1px] py-2 border-b-[#555555]"
         >
           <SquareTerminal />
           Output:{' '}
@@ -119,7 +119,7 @@ const Output = ({ editorRef, language, toggleTheme }) => {
         </Text>
 
         <Box
-          height={'40vh'}
+          height={'42vh'}
           overflowY={'auto'}
           p={2}
           color={
@@ -129,9 +129,9 @@ const Output = ({ editorRef, language, toggleTheme }) => {
               ? 'gray.500'
               : 'gray.700'
           }
-          background={!toggleTheme ? '#111' : 'white'}
+          background={!toggleTheme ? '#252525' : 'white'}
           borderRadius={4}
-          borderColor={isError ? 'red.500' : 'gray.500'}
+          borderColor={isError ? 'red.500' : '[#555555]'}
           className="overflow-auto text-[18px]"
         >
           {output

@@ -34,6 +34,7 @@ const LanguageSelector = ({
           borderWidth="1px"
           borderColor={'gray.500'}
           mb={4}
+          className="flex items-center"
         >
           {language}
         </MenuButton>
@@ -42,9 +43,9 @@ const LanguageSelector = ({
           py={4}
           transition="all 0.2s"
           borderRadius="md"
-          borderWidth="2px"
+          borderWidth="1px"
           borderColor={!toggleTheme ? '' : 'gray.300'}
-          background={!toggleTheme ? '#111' : '#fafafa'}
+          background={!toggleTheme ? '#252525' : '#ffffff'}
           zIndex={'10'}
         >
           {LANGUAGES.map(([name, version, logo]) => (
