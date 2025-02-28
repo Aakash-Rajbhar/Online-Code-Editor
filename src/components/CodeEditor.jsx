@@ -28,7 +28,7 @@ const CodeEditor = ({ handleToggleTheme, toggleTheme }) => {
       <HStack
         spacing={4}
         flexDirection={{ base: 'column', md: 'row' }}
-        alignItems={'flex-end'}
+        alignItems={'center'}
       >
         <Box width={{ base: '100%', md: '70%' }}>
           <LanguageSelector
@@ -77,6 +77,7 @@ const CodeEditor = ({ handleToggleTheme, toggleTheme }) => {
             />
           </div>
         </Box>
+
         <Output
           editorRef={editorRef}
           language={language}

@@ -48,7 +48,7 @@ const Output = ({ editorRef, language, toggleTheme }) => {
   return (
     <Box
       w={{ base: '100%', md: '50%' }}
-      className="flex flex-col gap-4 justify-center "
+      className="flex flex-col gap-4 md:gap-5 h-full justify-between"
     >
       <Button
         isLoading={isloading}
@@ -95,7 +95,7 @@ const Output = ({ editorRef, language, toggleTheme }) => {
         ></Textarea>
       </div>
 
-      <div className="border-[1px] border-gray-500 rounded-xl px-2">
+      <div className="border-[1px] border-[#555555] rounded-xl px-2">
         <Text
           mb={2}
           fontSize={'xl'}
@@ -119,7 +119,7 @@ const Output = ({ editorRef, language, toggleTheme }) => {
         </Text>
 
         <Box
-          height={'42vh'}
+          height={'43vh'}
           overflowY={'auto'}
           p={2}
           color={
